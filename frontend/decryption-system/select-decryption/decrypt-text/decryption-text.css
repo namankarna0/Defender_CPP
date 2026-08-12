@@ -1,0 +1,753 @@
+/* =========================================================
+   DEFENDER++ — DECRYPT TEXT
+   Clean cyber-security UI
+========================================================= */
+
+.text-crypto-section {
+    width: 100%;
+    padding: 35px 8% 70px;
+    box-sizing: border-box;
+}
+
+/* Main card */
+.text-crypto-card {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 42px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 18, 38, 0.96),
+            rgba(5, 12, 27, 0.98)
+        );
+
+    border: 1px solid rgba(0, 217, 255, 0.20);
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35),
+        0 0 35px rgba(0, 217, 255, 0.05);
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative glow */
+.text-crypto-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    top: -150px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 217, 255, 0.08);
+
+    filter: blur(50px);
+
+    pointer-events: none;
+}
+
+.text-crypto-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    bottom: -140px;
+    left: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(123, 46, 255, 0.07);
+
+    filter: blur(50px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.crypto-card-header {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 38px;
+}
+
+.crypto-card-icon {
+    width: 72px;
+    height: 72px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00d9ff,
+            #5967ff 55%,
+            #7b2eff
+        );
+
+    color: #ffffff;
+
+    font-size: 29px;
+
+    box-shadow:
+        0 0 25px rgba(0, 217, 255, 0.22),
+        0 0 45px rgba(123, 46, 255, 0.10);
+
+    animation: decryptIconGlow 3s ease-in-out infinite;
+}
+
+@keyframes decryptIconGlow {
+    0%, 100% {
+        box-shadow:
+            0 0 25px rgba(0, 217, 255, 0.20),
+            0 0 45px rgba(123, 46, 255, 0.08);
+    }
+
+    50% {
+        box-shadow:
+            0 0 35px rgba(0, 217, 255, 0.32),
+            0 0 55px rgba(123, 46, 255, 0.16);
+    }
+}
+
+.crypto-card-header h2 {
+    margin: 0 0 7px;
+
+    color: #f3f7ff;
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 27px;
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+}
+
+.crypto-card-header p {
+    margin: 0;
+
+    color: #8999b3;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   FORM FIELDS
+========================================================= */
+
+.crypto-field {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 30px;
+}
+
+.crypto-field label {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 12px;
+
+    color: #d9e5f5;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.crypto-field label i {
+    color: #00d9ff;
+
+    font-size: 14px;
+
+    filter:
+        drop-shadow(
+            0 0 6px rgba(0, 217, 255, 0.4)
+        );
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.crypto-field textarea {
+    width: 100%;
+    min-height: 165px;
+
+    box-sizing: border-box;
+
+    padding: 18px 19px;
+
+    resize: vertical;
+
+    outline: none;
+
+    border: 1px solid rgba(0, 217, 255, 0.18);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #050d1c,
+            #071122
+        );
+
+    color: #eaf4ff;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+.crypto-field textarea:hover {
+    border-color: rgba(0, 217, 255, 0.32);
+}
+
+.crypto-field textarea:focus {
+    border-color: #00d9ff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #061021,
+            #08152a
+        );
+
+    box-shadow:
+        0 0 0 3px rgba(0, 217, 255, 0.05),
+        0 0 25px rgba(0, 217, 255, 0.08);
+}
+
+.crypto-field textarea::placeholder {
+    color: #586a84;
+}
+
+
+/* =========================================================
+   PASSWORD BOX
+========================================================= */
+
+.crypto-password-box {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(0, 217, 255, 0.18);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #050d1c,
+            #071122
+        );
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.crypto-password-box:hover {
+    border-color: rgba(0, 217, 255, 0.32);
+}
+
+.crypto-password-box:focus-within {
+    border-color: #00d9ff;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 217, 255, 0.05),
+        0 0 25px rgba(0, 217, 255, 0.08);
+}
+
+.crypto-password-box input {
+    width: 100%;
+    min-width: 0;
+
+    padding: 18px;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.crypto-password-box input::placeholder {
+    color: #586a84;
+}
+
+
+/* =========================================================
+   EYE BUTTON
+========================================================= */
+
+.password-toggle {
+    width: 58px;
+    height: 56px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #667991;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        transform .25s ease;
+}
+
+.password-toggle:hover {
+    color: #00d9ff;
+
+    background:
+        rgba(0, 217, 255, 0.06);
+
+    transform: scale(1.04);
+}
+
+.password-toggle.password-visible {
+    color: #00d9ff;
+
+    text-shadow:
+        0 0 10px rgba(0, 217, 255, 0.5);
+}
+
+
+/* =========================================================
+   DECRYPT BUTTON
+========================================================= */
+
+.crypto-action-btn {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 5px;
+
+    border: 1px solid #00d9ff;
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(0, 217, 255, 0.18),
+            rgba(51, 91, 170, 0.28),
+            rgba(123, 46, 255, 0.22)
+        );
+
+    color: #ffffff;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 25px rgba(0, 217, 255, 0.08);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+.crypto-action-btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: left .6s ease;
+}
+
+.crypto-action-btn:hover::before {
+    left: 140%;
+}
+
+.crypto-action-btn i {
+    color: #00d9ff;
+
+    position: relative;
+    z-index: 2;
+}
+
+.crypto-action-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+.crypto-action-btn:hover {
+    transform: translateY(-3px);
+
+    border-color: #00e5ff;
+
+    box-shadow:
+        0 0 28px rgba(0, 217, 255, 0.20),
+        0 0 50px rgba(123, 46, 255, 0.10);
+}
+
+.crypto-action-btn:active {
+    transform: translateY(0) scale(.99);
+}
+
+
+/* =========================================================
+   OUTPUT
+========================================================= */
+
+.crypto-output {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 38px;
+}
+
+.output-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+
+    color: #d9e5f5;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   OUTPUT ACTION BUTTONS
+========================================================= */
+
+.output-actions {
+    display: flex;
+
+    gap: 8px;
+}
+
+.output-actions button {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(0, 217, 255, 0.20);
+    border-radius: 9px;
+
+    background:
+        rgba(0, 217, 255, 0.035);
+
+    color: #00d9ff;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+.output-actions button:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(0, 217, 255, 0.50);
+
+    background:
+        rgba(0, 217, 255, 0.08);
+
+    box-shadow:
+        0 0 15px rgba(0, 217, 255, 0.10);
+}
+
+
+/* =========================================================
+   OUTPUT TEXTAREA
+========================================================= */
+
+.crypto-output textarea {
+    width: 100%;
+    min-height: 165px;
+
+    box-sizing: border-box;
+
+    padding: 18px 19px;
+
+    resize: vertical;
+
+    outline: none;
+
+    border: 1px solid rgba(0, 217, 255, 0.18);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #050d1c,
+            #071122
+        );
+
+    color: #a9d8ff;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.crypto-output textarea::placeholder {
+    color: #586a84;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.crypto-back-btn {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+
+    width: fit-content;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin: 32px auto 0;
+
+    color: #71839d;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition:
+        color .25s ease,
+        transform .25s ease;
+}
+
+.crypto-back-btn:hover {
+    color: #00d9ff;
+
+    transform: translateX(-5px);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.crypto-field textarea::-webkit-scrollbar,
+.crypto-output textarea::-webkit-scrollbar {
+    width: 7px;
+}
+
+.crypto-field textarea::-webkit-scrollbar-track,
+.crypto-output textarea::-webkit-scrollbar-track {
+    background: #050b18;
+}
+
+.crypto-field textarea::-webkit-scrollbar-thumb,
+.crypto-output textarea::-webkit-scrollbar-thumb {
+    background: #18364d;
+
+    border-radius: 10px;
+}
+
+.crypto-field textarea::-webkit-scrollbar-thumb:hover,
+.crypto-output textarea::-webkit-scrollbar-thumb:hover {
+    background: #00d9ff;
+}
+
+
+/* =========================================================
+   PAGE ANIMATION
+========================================================= */
+
+.text-crypto-card {
+    animation: decryptCardIn .55s ease both;
+}
+
+@keyframes decryptCardIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .text-crypto-section {
+        padding: 30px 5% 60px;
+    }
+
+    .text-crypto-card {
+        padding: 32px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .text-crypto-section {
+        padding: 25px 4% 50px;
+    }
+
+    .text-crypto-card {
+        padding: 25px 20px;
+
+        border-radius: 18px;
+    }
+
+    .crypto-card-header {
+        align-items: flex-start;
+    }
+
+    .crypto-card-icon {
+        width: 62px;
+        height: 62px;
+
+        border-radius: 16px;
+
+        font-size: 25px;
+    }
+
+    .crypto-card-header h2 {
+        font-size: 21px;
+    }
+
+    .crypto-card-header p {
+        font-size: 13px;
+    }
+
+    .crypto-field textarea,
+    .crypto-output textarea {
+        min-height: 140px;
+    }
+
+    .crypto-action-btn {
+        height: 56px;
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+    .crypto-card-header {
+        flex-direction: column;
+    }
+
+    .output-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .crypto-password-box input {
+        padding: 16px;
+    }
+
+}

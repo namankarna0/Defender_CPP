@@ -1,0 +1,277 @@
+/* ==================================================
+   DECRYPTION PAGE
+   Choose: Decrypt File / Decrypt Text
+================================================== */
+
+.crypto-choice-section {
+    min-height: 55vh;
+    padding: 50px 8% 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crypto-choice-container {
+    width: 100%;
+    max-width: 1050px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+
+
+/* ==================================================
+   DECRYPTION CARD
+================================================== */
+
+.crypto-choice-card {
+    position: relative;
+
+    min-height: 260px;
+    padding: 38px;
+
+    display: flex;
+    align-items: center;
+    gap: 28px;
+
+    overflow: hidden;
+
+    text-decoration: none;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(9, 20, 43, 0.92),
+            rgba(5, 12, 27, 0.96)
+        );
+
+    border: 1px solid rgba(123, 46, 255, 0.18);
+    border-radius: 24px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.crypto-choice-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 200px;
+    height: 200px;
+
+    top: -100px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(123, 46, 255, 0.07);
+
+    filter: blur(35px);
+
+    transition: 0.4s;
+}
+
+.crypto-choice-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(123, 46, 255, 0.55);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(123, 46, 255, 0.12);
+}
+
+.crypto-choice-card:hover::before {
+    transform: scale(1.5);
+
+    background: rgba(123, 46, 255, 0.14);
+}
+
+
+/* ==================================================
+   NUMBER
+================================================== */
+
+.choice-number {
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    color: rgba(255, 255, 255, 0.18);
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+
+/* ==================================================
+   ICONS
+================================================== */
+
+.choice-icon {
+    width: 85px;
+    height: 85px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 22px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* FILE */
+
+.decrypt-file-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #7b2eff,
+            #4c24b8
+        );
+
+    box-shadow:
+        0 0 30px rgba(123, 46, 255, 0.25);
+}
+
+
+/* TEXT */
+
+.decrypt-text-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #00d9ff,
+            #7b2eff
+        );
+
+    box-shadow:
+        0 0 30px rgba(0, 217, 255, 0.22);
+}
+
+.crypto-choice-card:hover .choice-icon {
+    transform:
+        scale(1.08)
+        rotate(-3deg);
+}
+
+
+/* ==================================================
+   CONTENT
+================================================== */
+
+.choice-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+.choice-content h2 {
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-family: 'Orbitron', sans-serif;
+
+    font-size: 22px;
+}
+
+.choice-content p {
+    max-width: 360px;
+
+    margin: 0 0 20px;
+
+    color: #8493aa;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* ==================================================
+   LINK
+================================================== */
+
+.choice-link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    color: #b47cff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: gap 0.3s ease;
+}
+
+.crypto-choice-card:hover .choice-link {
+    gap: 15px;
+
+    color: #00d9ff;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 800px) {
+
+    .crypto-choice-container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .crypto-choice-section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .crypto-choice-card {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        min-height: auto;
+
+        padding: 30px;
+    }
+
+    .choice-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 28px;
+    }
+
+}

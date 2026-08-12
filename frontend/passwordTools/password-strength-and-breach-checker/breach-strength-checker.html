@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Password Strength & Breach Checker | DEFENDER++</title>
+
+    <link rel="stylesheet" href="../../style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Mouse Glow -->
+    <div class="mouse-glow"></div>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved"></i>
+        DEFENDER++
+      </div>
+
+      <nav>
+        <a href="../../index.html">Home</a>
+        <a href="../../passwordTools/password-tools-final.html" class="active"
+          >Password Tools</a
+        >
+        <a href="../../system-monitor/monitor.html">Monitor System</a>
+        <a href="../../port-scanner/port-scanner.html">Port Scanner</a>
+        <a href="../../encryption-system/encryption.html">Encryption</a>
+        <a href="../../decryption-system/decryption.html">Decryption</a>
+      </nav>
+    </header>
+
+    <!-- ================= PAGE HERO ================= -->
+
+    <section class="pageHero">
+      <div class="hero-icon">
+        <i class="fa-solid fa-key"></i>
+      </div>
+
+      <h1>Password Security</h1>
+
+      <p>
+        Analyze password strength and check whether a password may have appeared
+        in known security breaches.
+      </p>
+    </section>
+
+    <!-- ================= MAIN CHECKER ================= -->
+
+    <section class="password-checker-section">
+      <div class="password-checker-card">
+        <div class="checker-header">
+          <div class="checker-icon">
+            <i class="fa-solid fa-user-shield"></i>
+          </div>
+
+          <div>
+            <h2>Password Strength & Breach Checker</h2>
+
+            <p>
+              Enter a password below to analyze its security characteristics.
+            </p>
+          </div>
+        </div>
+
+        <!-- Password Input -->
+
+        <div class="password-input-area">
+          <label for="password"> Password </label>
+
+          <div class="password-input-wrapper">
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              autocomplete="off"
+            />
+
+            <button
+              type="button"
+              id="togglePassword"
+              class="icon-button"
+              aria-label="Show password"
+            >
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Analyze Button -->
+
+        <button type="button" id="analyzeButton" class="btn analyze-btn">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+
+          Analyze Password
+        </button>
+
+        <!-- Error -->
+
+        <p id="error" class="checker-error"></p>
+
+        <!-- ================= RESULT ================= -->
+
+        <div id="result" class="password-result hidden">
+          <div class="result-heading">
+            <div>
+              <span class="result-label"> SECURITY ANALYSIS </span>
+
+              <h2 id="strength">—</h2>
+            </div>
+
+            <div class="score-circle">
+              <span id="score"> 0 </span>
+
+              <small> /14 </small>
+            </div>
+          </div>
+
+          <!-- Strength Bar -->
+
+          <div class="strength-bar-container">
+            <div class="strength-bar">
+              <div id="strengthBar" class="strength-bar-fill"></div>
+            </div>
+          </div>
+
+          <!-- Details -->
+
+          <div class="security-details">
+            <div class="security-detail">
+              <span>
+                <i class="fa-solid fa-ruler-horizontal"></i>
+                Length
+              </span>
+
+              <strong id="length"> — </strong>
+            </div>
+
+            <div class="security-detail">
+              <span>
+                <i class="fa-solid fa-font"></i>
+                Uppercase
+              </span>
+
+              <strong id="uppercase"> — </strong>
+            </div>
+
+            <div class="security-detail">
+              <span>
+                <i class="fa-solid fa-font"></i>
+                Lowercase
+              </span>
+
+              <strong id="lowercase"> — </strong>
+            </div>
+
+            <div class="security-detail">
+              <span>
+                <i class="fa-solid fa-hashtag"></i>
+                Digit
+              </span>
+
+              <strong id="digit"> — </strong>
+            </div>
+
+            <div class="security-detail">
+              <span>
+                <i class="fa-solid fa-at"></i>
+                Symbol
+              </span>
+
+              <strong id="symbol"> — </strong>
+            </div>
+
+            <div class="security-detail">
+              <span>
+                <i class="fa-solid fa-repeat"></i>
+                Repeated Characters
+              </span>
+
+              <strong id="repeated"> — </strong>
+            </div>
+
+            <div class="security-detail breach-detail">
+              <span>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Common Password
+              </span>
+
+              <strong id="commonpassword"> — </strong>
+            </div>
+          </div>
+
+          <!-- Breach Section -->
+
+          <div class="breach-box">
+            <div class="breach-icon">
+              <i class="fa-solid fa-database"></i>
+            </div>
+
+            <div>
+              <h3>Breach Check</h3>
+
+              <p>Breach checking will be connected to the C++ backend later.</p>
+            </div>
+
+            <span class="backend-status"> FRONTEND </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INFORMATION ================= -->
+
+    <section>
+      <h2 class="title">Password Security</h2>
+
+      <div class="cards">
+        <div class="card">
+          <i class="fa-solid fa-shield-halved"></i>
+
+          <h3>Strong Passwords</h3>
+
+          <p>
+            Use long and unique passwords containing different types of
+            characters.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-database"></i>
+
+          <h3>Breach Awareness</h3>
+
+          <p>
+            Check whether credentials may have been exposed in known security
+            incidents.
+          </p>
+        </div>
+
+        <div class="card">
+          <i class="fa-solid fa-user-lock"></i>
+
+          <h3>Protect Your Accounts</h3>
+
+          <p>Avoid reusing passwords across multiple accounts and services.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+      <h2>DEFENDER++</h2>
+
+      <p>Protect • Monitor • Scan • Encrypt</p>
+
+      <p>© 2026 DEFENDER++</p>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+    <script src="js/password-checker.js"></script>
+  </body>
+</html>

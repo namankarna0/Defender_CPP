@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Encrypt File | DEFENDER++</title>
+
+    <link rel="stylesheet" href="../../../style.css" />
+    <link rel="stylesheet" href="./encrypt-file.css" />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="nav-container">
+        <!-- Logo -->
+        <a href="../../../index.html" class="logo">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>DEFENDER<span class="logo-plus">++</span></span>
+        </a>
+
+        <!-- Navigation -->
+        <nav class="nav-menu">
+          <a href="../../../index.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </a>
+
+          <a href="../../../passwordTools/password-tools-final.html">
+            <i class="fa-solid fa-key"></i>
+            <span>Password Tools</span>
+          </a>
+
+          <a href="../../../system-monitor/monitor.html">
+            <i class="fa-solid fa-desktop"></i>
+            <span>Monitor System</span>
+          </a>
+
+          <a href="../../../port-scanner/port-scanner.html">
+            <i class="fa-solid fa-network-wired"></i>
+            <span>Port Scanner</span>
+          </a>
+
+          <a href="../../../encryption-system/encryption.html" class="active">
+            <i class="fa-solid fa-lock"></i>
+            <span>Encryption</span>
+          </a>
+
+          <a href="../../../decryption-system/decryption.html">
+            <i class="fa-solid fa-lock-open"></i>
+            <span>Decryption</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="file-crypto-section">
+      <div class="file-crypto-card">
+        <!-- HEADER -->
+        <div class="file-crypto-header">
+          <div class="file-crypto-icon">
+            <i class="fa-solid fa-file-shield"></i>
+          </div>
+
+          <div>
+            <h1>Encrypt File</h1>
+            <p>Protect your file with password-based encryption.</p>
+          </div>
+        </div>
+
+        <!-- FILE SELECT -->
+        <div class="file-crypto-field">
+          <label>
+            <i class="fa-solid fa-file"></i>
+            Select File
+          </label>
+
+          <div class="file-select-box">
+            <input type="file" id="encryptFile" hidden />
+
+            <button
+              type="button"
+              class="file-select-btn"
+              id="selectEncryptFile"
+            >
+              <i class="fa-solid fa-folder-open"></i>
+              Select File
+            </button>
+
+            <span id="encryptFileName"> No file selected </span>
+          </div>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="file-crypto-field">
+          <label>
+            <i class="fa-solid fa-key"></i>
+            Encryption Password
+          </label>
+
+          <div class="file-password-box">
+            <input
+              type="password"
+              id="encryptFilePassword"
+              placeholder="Enter password"
+            />
+
+            <button
+              type="button"
+              class="password-toggle"
+              data-target="encryptFilePassword"
+              title="Show password"
+            >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- START ENCRYPTION -->
+        <button type="button" class="file-action-btn" id="startEncryption">
+          <i class="fa-solid fa-lock"></i>
+          <span>Start Encryption</span>
+        </button>
+
+        <!-- SUCCESS MESSAGE -->
+        <div class="file-status success" id="encryptionSuccess">
+          <i class="fa-solid fa-circle-check"></i>
+
+          <div>
+            <strong>Encryption Successful</strong>
+            <p>Your file has been encrypted successfully.</p>
+          </div>
+        </div>
+
+        <!-- ERROR MESSAGE -->
+        <div class="file-status error" id="encryptionError">
+          <i class="fa-solid fa-circle-exclamation"></i>
+
+          <div>
+            <strong>Encryption Failed</strong>
+            <p id="encryptionErrorText">
+              Please select a file and enter a password.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../../../js/script.js"></script>
+    <script src="./encrypt-file.js"></script>
+  </body>
+</html>
