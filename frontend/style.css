@@ -813,6 +813,53 @@ table td {
 }
 
 /*=========================================
+    SYSTEM METRICS TABLE
+=========================================*/
+
+.metricsPage {
+  min-height: 52vh;
+  padding: 55px 8% 90px;
+}
+
+.metricsToolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 24px;
+}
+
+.backLink {
+  color: #00e5ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.backLink:hover { color: #00ff99; }
+
+#metricsStatus { color: #c9c9c9; text-align: right; }
+
+.metricsTableWrap {
+  overflow-x: auto;
+  border: 1px solid rgba(0, 229, 255, 0.22);
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.12);
+  background: #121821;
+}
+
+.metricsTable { min-width: 760px; margin: 0; }
+
+.metricsTable th { font-family: Orbitron, sans-serif; white-space: nowrap; }
+
+.metricsTable td { color: #e7edf4; white-space: nowrap; }
+
+.metricsTable tbody tr:nth-child(even) td { background: #101720; }
+
+.metricsTable tbody tr:hover td { background: #1b2b38; }
+
+.emptyRow td { padding: 38px; color: #c9c9c9; }
+
+/*=========================================
     FORM INPUT
 =========================================*/
 
@@ -996,6 +1043,10 @@ footer p {
   .monitorStatus {
     grid-template-columns: 1fr;
   }
+
+  .metricsToolbar { align-items: flex-start; flex-direction: column; }
+
+  #metricsStatus { text-align: left; }
 
   .featureList {
     grid-template-columns: 1fr;

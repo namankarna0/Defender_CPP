@@ -1,89 +1,26 @@
-#include <iostream>
+#include "password_generator.h"
+
 #include <string>
-#include <cstdlib>
-#include <ctime>
-using namespace std;
+#include <random>
 
-class PasswordGenerator
-{
-private:
-    int length;
-    bool useLower;
-    bool useUpper;
-    bool useDigits;
-    bool useSymbols;
-    string password;
+PasswordGenerator::PasswordGenerator(int length, bool lower, bool upper,
+                                     bool digits, bool symbols)
+    : length_(length), use_lower_(lower), use_upper_(upper),
+      use_digits_(digits), use_symbols_(symbols) {}
 
-public:
-    PasswordGenerator(int len, bool lower, bool upper, bool digits, bool symbols)
-    {
-        length = len;
-        useLower = lower;
-        useUpper = upper;
-        useDigits = digits;
-        useSymbols = symbols;
-        password = "";
-    }
-    void generatePassword()
-    {
-        string characters = "";
-        if (useLower)
-            characters += "abcdefghijklmnopqrstuvwxyz";
-        if (useUpper)
-            characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        if (useDigits)
-            characters += "0123456789";
-        if (useSymbols)
-            characters += "!@#$%^&*()-_=+[]{}<>?/|~";
-        if (characters.empty())
-        {
-            cout << "No character types selected. Cannot generate password." << endl;
-            return;
-        }
-        password = "";
+std::string PasswordGenerator::generate_password() const {
+    std::string characters;
+    if (use_lower_) characters += "abcdefghijklmnopqrstuvwxyz";
+    if (use_upper_) characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (use_digits_) characters += "0123456789";
+    if (use_symbols_) characters += "!@#$%^&*()-_=+[]{}<>?/|~";
+    if (characters.empty() || length_ < 4 || length_ > 128) return "";
 
-        for (int i = 0; i < length; i++)
-        {
-            int index = rand() % characters.length();
-            password += characters[index];
-        }
-    }
-    void displayPassword()
-    {
-        cout << "\nGenerated Password: " << password << endl;
-    }
-};
-
-int main()
-{
-    srand(time(0));
-    int length;
-    char choice;
-    bool lower, upper, digits, symbols; 
-    cout << "================RANDOM PASSWORD GENERATOR================" << endl;
-    cout << "\nEnter the desired length of the password: ";
-    cin >> length;
-    if (length <= 0)
-    {
-        cout << "Password length must be a positive integer." << endl;
-        return 1;
-    }
-    cout << "Do you want to include lowercase letters? (y/n): ";
-    cin >> choice;
-    lower = (choice == 'y' || choice == 'Y');
-    cout << "Do you want to include uppercase letters? (y/n): ";
-    cin >> choice;
-    upper = (choice == 'y' || choice == 'Y');
-    cout << "Do you want to include digits? (y/n): ";
-    cin >> choice;
-    digits = (choice == 'y' || choice == 'Y');
-    cout << "Do you want to include symbols? (y/n): ";
-    cin >> choice;
-    symbols = (choice == 'y' || choice == 'Y');
-
-    PasswordGenerator generator(length, lower, upper, digits, symbols);
-
-    generator.generatePassword();
-    generator.displayPassword();
-    return 0;
+    std::random_device device;
+    std::mt19937 generator(device());
+    std::uniform_int_distribution<std::size_t> pick(0, characters.size() - 1);
+    std::string password;
+    password.reserve(static_cast<std::size_t>(length_));
+    for (int i = 0; i < length_; ++i) password += characters[pick(generator)];
+    return password;
 }

@@ -64,7 +64,7 @@
             Encrypted Message
           </label>
 
-          <textarea placeholder="Enter encrypted message here..."></textarea>
+          <textarea id="encryptedMessage" placeholder="Enter encrypted message here..."></textarea>
         </div>
 
         <div class="crypto-field">
@@ -74,15 +74,15 @@
           </label>
 
           <div class="crypto-password-box">
-            <input type="password" placeholder="Enter decryption password" />
+            <input id="decryptionPassword" type="password" placeholder="Enter decryption password" />
 
-            <button type="button">
+            <button type="button" id="showDecryptionPassword">
               <i class="fa-regular fa-eye"></i>
             </button>
           </div>
         </div>
 
-        <button class="crypto-action-btn decrypt-action-btn">
+        <button class="crypto-action-btn decrypt-action-btn" id="decryptTextButton">
           <i class="fa-solid fa-unlock"></i>
 
           Start Decryption
@@ -103,7 +103,7 @@
             </div>
           </div>
 
-          <textarea
+          <textarea id="decryptedText"
             readonly
             placeholder="Decrypted text will appear here..."
           ></textarea>
@@ -126,5 +126,6 @@
     </footer>
 
     <script src="../../../js/script.js"></script>
+    <script src="./decrypt-text.js"></script>
   </body>
 </html>

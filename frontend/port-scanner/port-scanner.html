@@ -7,6 +7,7 @@
     <title>Port Scanner | DEFENDER++</title>
 
     <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./port-scanner.css" />
 
     <link
       rel="stylesheet"
@@ -61,7 +62,8 @@
 
         <p>
           Enter the IP address of the device you want to scan. The actual
-          scanning process will be handled by the C++ backend.
+          scan checks TCP ports 1–65535. Only scan systems you own or are
+          authorized to assess.
         </p>
 
         <!-- INPUT -->
@@ -88,6 +90,28 @@
 
             Scan
           </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="scan-results-section" aria-live="polite">
+      <div class="scan-results-card" id="scanResults" hidden>
+        <div class="scan-results-heading">
+          <div>
+            <p class="scan-results-label">SCAN RESULTS</p>
+            <h2 id="scanResultsTitle">Open TCP ports</h2>
+          </div>
+          <span class="scan-count" id="scanCount">0 found</span>
+        </div>
+        <p class="scan-note">
+          Exposure notes are general security guidance. They do not confirm a
+          vulnerability; patch status and configuration determine actual risk.
+        </p>
+        <div class="scan-table-wrap">
+          <table class="scan-table">
+            <thead><tr><th>Port</th><th>Service</th><th>Function</th><th>Potential exposure</th></tr></thead>
+            <tbody id="scanResultsBody"></tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -142,5 +166,6 @@
     </footer>
 
     <script src="../js/script.js"></script>
+    <script src="./port-scanner.js"></script>
   </body>
 </html>

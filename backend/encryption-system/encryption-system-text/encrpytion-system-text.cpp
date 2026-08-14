@@ -1,40 +1,21 @@
-#include<iostream>
-#include<string>
+#include "encryption_core.h"
 #include "base64.h"
-using namespace std;
 
-class XorCipher {
-    private:
-        string key;
-    public:
-        XorCipher(string password) {
-            key = password;
-        }
-        string encrypt(string message) {
-            string result = message;
-            for (int i = 0; i < message.length(); i++) {
-                result[i] = message[i] ^ key[i % key.length()];
-            }
-        return result;
+#include <stdexcept>
+
+std::string xor_transform(const std::string& message, const std::string& password) {
+    if (password.empty()) {
+        throw std::invalid_argument("A password is required.");
     }
 
-    string decrypt(string cipherText) {
-        return encrypt(cipherText);
+    std::string result = message;
+    for (std::size_t i = 0; i < result.length(); ++i) {
+        result[i] = result[i] ^ password[i % password.length()];
     }
-};
+    return result;
+}
 
-int main(){
-    string message, password;
-    cout << "Enter the message:" << endl;
-    getline(cin, message);
-    cout << "Enter the password:" << endl;
-    getline(cin, password);
-
-    XorCipher cipher(password);
-
-    string encrypted = cipher.encrypt(message);
-
-    cout << "Encrypted Text: "<< base64_encode((unsigned char const*)encrypted.c_str(), encrypted.length())<< endl;
-
-    return 0;
+std::string encrypt_text_with_original_cipher(const std::string& message,
+                                              const std::string& password) {
+    return base64_encode(xor_transform(message, password));
 }

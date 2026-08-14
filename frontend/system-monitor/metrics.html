@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Metrics | DEFENDER++</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo"><i class="fa-solid fa-shield-halved"></i> DEFENDER++</div>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="../passwordTools/password-tools-final.html">Password Tools</a>
+        <a href="./monitor.html" class="active">Monitor System</a>
+        <a href="../port-scanner/port-scanner.html">Port Scanner</a>
+        <a href="../encryption-system/encryption.html">Encryption</a>
+        <a href="../decryption-system/decryption.html">Decryption</a>
+      </nav>
+    </header>
+    <section class="pageHero metricsHero">
+      <h1 id="metricsTitle">Activity Metrics</h1>
+      <p id="metricsDescription">Review every saved system-monitoring record.</p>
+    </section>
+    <main class="metricsPage">
+      <div class="metricsToolbar">
+        <a class="backLink" href="./monitor.html"><i class="fa-solid fa-arrow-left"></i> Back to Monitor</a>
+        <p id="metricsStatus" role="status">Loading metrics…</p>
+      </div>
+      <div class="metricsTableWrap" tabindex="0">
+        <table class="metricsTable">
+          <thead><tr><th>Timestamp</th><th>CPU Usage</th><th>Memory Usage</th><th>Disk Usage</th><th>Temperature</th></tr></thead>
+          <tbody id="metricsRows"></tbody>
+        </table>
+      </div>
+    </main>
+    <footer><h2>DEFENDER++</h2><p>Protect • Monitor • Encrypt • Secure</p><p>© 2026 DEFENDER++</p></footer>
+    <script src="../js/script.js"></script>
+    <script src="./metrics.js"></script>
+  </body>
+</html>

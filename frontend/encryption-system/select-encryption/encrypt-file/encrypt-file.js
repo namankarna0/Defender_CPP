@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* Start encryption */
 
-    encryptButton.addEventListener("click", () => {
+    encryptButton.addEventListener("click", async () => {
 
         successMessage.classList.remove("show");
         errorMessage.classList.remove("show");
@@ -88,23 +88,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /*
-         * BACKEND WILL BE CONNECTED HERE
-         *
-         * Later:
-         *
-         * const formData = new FormData();
-         * formData.append("file", fileInput.files[0]);
-         * formData.append("password", password.value);
-         *
-         * fetch("http://localhost:8080/encrypt-file", {
-         *     method: "POST",
-         *     body: formData
-         * });
-         */
-
-
-        successMessage.classList.add("show");
+        try {
+            const formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+            formData.append("password", password.value);
+            const response = await fetch("/api/encrypt/file", { method: "POST", body: formData });
+            if (!response.ok) { const data = await response.json(); throw new Error(data.error); }
+            const blob = await response.blob(); const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob); link.download = `${fileInput.files[0].name}.enc`; link.click(); URL.revokeObjectURL(link.href);
+            successMessage.classList.add("show");
+        } catch (error) { errorText.textContent = error.message || "Encryption failed."; errorMessage.classList.add("show"); }
 
     });
 

@@ -1,201 +1,65 @@
-#include <iostream>
+#include "password_analysis.h"
+
 #include <string>
 #include <cmath>
 #include <iomanip>
+#include <sstream>
 
-using namespace std;
+namespace {
+// Formats the theoretical keyspace without overflowing a numeric response.
+std::string format_combinations(long double log10_combinations) {
+    if (log10_combinations < 18) {
+        std::ostringstream output;
+        output << std::fixed << std::setprecision(0) << std::pow(10.0L, log10_combinations);
+        return output.str();
+    }
+    std::ostringstream output;
+    output << "~" << std::fixed << std::setprecision(2)
+           << std::pow(10.0L, log10_combinations - std::floor(log10_combinations))
+           << "e+" << static_cast<long long>(std::floor(log10_combinations));
+    return output.str();
+}
+}
 
-class PasswordAnalyzer {
-private:
-    string password;
+// Calculates dictionary or brute-force attack metrics for the supplied password.
+PasswordAnalysis analyze_password(const std::string& password,
+                                  long double attempts_per_second,
+                                  bool common_password,
+                                  std::optional<std::size_t> dictionary_position) {
+    PasswordAnalysis result;
+    for (unsigned char character : password) {
+        if (character >= 'a' && character <= 'z') result.lowercase = true;
+        else if (character >= 'A' && character <= 'Z') result.uppercase = true;
+        else if (character >= '0' && character <= '9') result.digit = true;
+        else result.symbol = true;
+    }
+    result.character_pool = (result.lowercase ? 26 : 0) +
+                            (result.uppercase ? 26 : 0) +
+                            (result.digit ? 10 : 0) + (result.symbol ? 10 : 0);
+    result.common_password = common_password;
+    result.dictionary_position = dictionary_position;
+    result.combination_log10 = result.character_pool
+        ? password.length() * std::log10(static_cast<long double>(result.character_pool)) : 0;
+    result.total_combinations = result.character_pool
+        ? format_combinations(result.combination_log10) : "0";
+    const int types = result.lowercase + result.uppercase + result.digit + result.symbol;
+    if (common_password) result.strength = "Very Weak";
+    else if (password.length() < 6) result.strength = "Weak";
+    else if (password.length() < 8 || types < 3) result.strength = "Moderate";
+    else if (password.length() >= 12 && types == 4) result.strength = "Very Strong";
+    else result.strength = "Strong";
 
-    bool hasLowercase = false;
-    bool hasUppercase = false;
-    bool hasDigit = false;
-    bool hasSymbol = false;
-
-    int characterPool = 0;
-
-public:
-
-    PasswordAnalyzer(string pass) {
-        password = pass;
-        analyzePassword();
+    if (dictionary_position && attempts_per_second > 0) {
+        result.total_combinations = std::to_string(*dictionary_position) + " dictionary attempts";
+        result.attack_seconds = static_cast<long double>(*dictionary_position) / attempts_per_second;
+        result.attack_log10_seconds = result.attack_seconds > 0 ? std::log10(result.attack_seconds) : 0;
+        return result;
     }
 
-    void analyzePassword() {
-
-        for (char ch : password) {
-
-            if (ch >= 'a' && ch <= 'z')
-                hasLowercase = true;
-
-            else if (ch >= 'A' && ch <= 'Z')
-                hasUppercase = true;
-
-            else if (ch >= '0' && ch <= '9')
-                hasDigit = true;
-
-            else
-                hasSymbol = true;
-        }
-
-        if (hasLowercase)
-            characterPool += 26;
-
-        if (hasUppercase)
-            characterPool += 26;
-
-        if (hasDigit)
-            characterPool += 10;
-
-        if (hasSymbol)
-            characterPool += 10;
-    }
-
-
-    void displayInformation() {
-
-        cout << "\n========== PASSWORD ANALYSIS ==========\n";
-
-        cout << "Password Length : "
-             << password.length() << endl;
-
-        cout << "Lowercase       : "
-             << (hasLowercase ? "Yes" : "No") << endl;
-
-        cout << "Uppercase       : "
-             << (hasUppercase ? "Yes" : "No") << endl;
-
-        cout << "Numbers         : "
-             << (hasDigit ? "Yes" : "No") << endl;
-
-        cout << "Symbols         : "
-             << (hasSymbol ? "Yes" : "No") << endl;
-
-        cout << "Character Pool  : "
-             << characterPool << endl;
-    }
-
-
-    long double calculateLogCombinations() {
-
-        int length = password.length();
-
-        return length * log10((long double)characterPool);
-    }
-
-    void calculateAttackTime(long double attemptsPerSecond) {
-
-        long double logCombinations =
-            calculateLogCombinations();
-
-        long double logSeconds =
-            logCombinations - log10(attemptsPerSecond);
-
-        cout << "\n========== ATTACK SIMULATION ==========\n";
-
-        cout << fixed << setprecision(2);
-
-        cout << "Attack Speed : "
-             << attemptsPerSecond
-             << " attempts/second\n";
-
-
-        if (logSeconds < 6) {
-
-            long double combinations =
-                pow(10, logCombinations);
-
-            long double seconds =
-                combinations / attemptsPerSecond;
-
-            cout << "Possible Combinations : "
-                 << combinations << endl;
-
-            cout << "Estimated Time : "
-                 << seconds << " seconds\n";
-        }
-
-        else {
-
-            cout << "Possible Combinations : 10^"
-                 << logCombinations << endl;
-
-            cout << "Estimated Time : 10^"
-                 << logSeconds
-                 << " seconds\n";
-
-            cout << "(Extremely large search space)\n";
-        }
-    }
-
-    void showStrength() {
-
-        int length = password.length();
-        int types = 0;
-
-        if (hasLowercase) types++;
-        if (hasUppercase) types++;
-        if (hasDigit) types++;
-        if (hasSymbol) types++;
-
-        cout << "\n========== PASSWORD STRENGTH ==========\n";
-
-        if (length < 6) {
-
-            cout << "Strength : WEAK\n";
-        }
-
-        else if (length < 8 || types < 3) {
-
-            cout << "Strength : MODERATE\n";
-        }
-
-        else if (length >= 12 && types == 4) {
-
-            cout << "Strength : VERY STRONG\n";
-        }
-
-        else {
-
-            cout << "Strength : STRONG\n";
-        }
-    }
-};
-
-
-int main() {
-
-    string password;
-
-    long double attackSpeed;
-
-    cout << "============================================\n";
-    cout << "       PASSWORD ATTACK SIMULATOR\n";
-    cout << "============================================\n";
-
-    cout << "\nEnter a test password: ";
-    cin >> password;
-
-    cout << "\nEnter hypothetical attack speed";
-    cout << "\n(attempts per second): ";
-
-    cin >> attackSpeed;
-
-    if (attackSpeed <= 0) {
-
-        cout << "\nInvalid attack speed.\n";
-        return 0;
-    }
-
-    PasswordAnalyzer analyzer(password);
-
-    analyzer.displayInformation();
-
-    analyzer.calculateAttackTime(attackSpeed);
-
-    analyzer.showStrength();
-
-    return 0;
+    result.attack_log10_seconds = result.character_pool && attempts_per_second > 0
+        ? result.combination_log10 - std::log10(attempts_per_second)
+        : 0;
+    result.attack_seconds = result.attack_log10_seconds < 18
+        ? std::pow(10.0L, result.attack_log10_seconds) : -1;
+    return result;
 }

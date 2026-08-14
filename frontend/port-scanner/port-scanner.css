@@ -1,0 +1,17 @@
+.scanner-result { min-height: 1.5rem; margin-top: 1rem; color: #00e5ff; font-weight: 500; }
+.scan-results-section { padding: 0 8% 5rem; }
+.scan-results-card { max-width: 1200px; margin: auto; padding: 2rem; border: 1px solid rgba(0, 217, 255, .2); border-radius: 24px; background: rgba(255, 255, 255, .05); box-shadow: 0 0 30px rgba(0, 229, 255, .12); }
+.scan-results-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.scan-results-label { color: #00e5ff; font-family: Orbitron, sans-serif; font-size: .75rem; letter-spacing: .12em; }
+.scan-results-heading h2 { font-family: Orbitron, sans-serif; color: #fff; font-size: 1.4rem; margin-top: .35rem; }
+.scan-count { padding: .45rem .8rem; border: 1px solid rgba(0, 229, 255, .45); border-radius: 999px; color: #00e5ff; white-space: nowrap; }
+.scan-note { color: #b8c4d6; line-height: 1.6; margin-bottom: 1.25rem; }
+.scan-table-wrap { overflow-x: auto; border: 1px solid rgba(255, 255, 255, .08); border-radius: 14px; }
+.scan-table { min-width: 780px; margin: 0; }
+.scan-table th { background: linear-gradient(135deg, #00d9ff, #7b2eff); color: #fff; font-family: Orbitron, sans-serif; font-size: .8rem; text-align: left; }
+.scan-table td { background: rgba(15, 23, 36, .92); color: #dce7f5; text-align: left; vertical-align: top; line-height: 1.55; }
+.scan-table tr:hover td { background: rgba(0, 217, 255, .08); }
+.scan-table .port-number { color: #00e5ff; font-family: Orbitron, sans-serif; font-weight: bold; }
+.scan-table .exposure-cell { color: #ffd59d; }
+.scan-table .scan-empty { text-align: center; color: #b8c4d6; padding: 2rem; }
+@media (max-width: 640px) { .scan-results-section { padding: 0 5% 3rem; } .scan-results-card { padding: 1.25rem; } .scan-results-heading { align-items: flex-start; flex-direction: column; } }
