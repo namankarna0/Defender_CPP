@@ -283,9 +283,9 @@ Future improvements can include:
 
 ## 👨‍💻 Author
 
-**Naman Karna**
-**Krishal Khatri**
-**Nikhil Kr. Verma**
+**Naman Karna**/
+**Krishal Khatri**/
+**Nikhil Kr. Verma**/
 **Krishna Bahadur Thapa**
 
 ------------------------------------------------------------------------
