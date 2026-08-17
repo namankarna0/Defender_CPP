@@ -128,8 +128,8 @@ DEFENDER++/
 ### 1. Clone the repository
 
 ``` bash
-git clone https://github.com/namankarna0/DEFENDER-A-Cyber-Security-Toolkit.git
-cd DEFENDER-A-Cyber-Security-Toolkit
+git clone https://github.com/krishal-sec/Defender.git
+cd Defender
 ```
 
 ### 2. Install the required build tools
@@ -283,7 +283,10 @@ Future improvements can include:
 
 ## 👨‍💻 Author
 
-**Naman Karna**
+**KRISHAL KHATRI**/
+**NAMAN KARNA**/
+**NIKHIL KUMAR VERMA**/
+**KRISHNA BAHADUR THAPA**
 
 ------------------------------------------------------------------------
 
