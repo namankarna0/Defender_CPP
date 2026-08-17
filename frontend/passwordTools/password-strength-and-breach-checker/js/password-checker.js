@@ -1,6 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
   const password = document.getElementById("password"),
+    togglePassword = document.getElementById("togglePassword"),
     button = document.getElementById("analyzeButton");
+
+  // Eye Button Toggle Listener
+  togglePassword.addEventListener("click", () => {
+    // Toggle input type between "password" and "text"
+    const isPassword = password.getAttribute("type") === "password";
+    password.setAttribute("type", isPassword ? "text" : "password");
+
+    // Toggle icon and aria-label
+    const icon = togglePassword.querySelector("i");
+    icon.classList.toggle("fa-eye");
+    icon.classList.toggle("fa-eye-slash");
+    
+    togglePassword.setAttribute(
+      "aria-label",
+      isPassword ? "Hide password" : "Show password"
+    );
+  });
+
+  // Password Analysis Listener
   button.onclick = async () => {
     if (!password.value) {
       document.getElementById("error").textContent =
