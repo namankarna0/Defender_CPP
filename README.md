@@ -128,8 +128,8 @@ DEFENDER++/
 ### 1. Clone the repository
 
 ``` bash
-git clone https://github.com/krishal-sec/Defender.git
-cd Defender
+git clone https://github.com/namankarna0/DEFENDER-A-Cyber-Security-Toolkit.git
+cd DEFENDER-A-Cyber-Security-Toolkit
 ```
 
 ### 2. Install the required build tools
@@ -164,7 +164,7 @@ chmod +x start.sh
 The server prints the local URL when it starts, for example:
 
 ``` text
-Defender running at http://localhost:<port>
+DEFENDER++ running at http://localhost:<port>
 ```
 
 Open that address in your browser.
@@ -283,10 +283,7 @@ Future improvements can include:
 
 ## 👨‍💻 Author
 
-**KRISHAL KHATRI** / 
-**NAMAN KARNA** /
-**NIKHIL KUMAR VERMA** /
-**KRISHNA BAHADUR THAPA**
+**Naman Karna**
 
 ------------------------------------------------------------------------
 
@@ -317,4 +314,3 @@ Before submitting changes:
 ### 🛡️ DEFENDER++
 
 **Protect • Monitor • Encrypt • Secure**
-
