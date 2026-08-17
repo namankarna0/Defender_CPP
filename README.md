@@ -129,7 +129,7 @@ DEFENDER++/
 
 ``` bash
 git clone https://github.com/krishal-sec/Defender.git
-cd DEFENDER-A-Cyber-Security-Toolkit
+cd Defender
 ```
 
 ### 2. Install the required build tools
@@ -164,7 +164,7 @@ chmod +x start.sh
 The server prints the local URL when it starts, for example:
 
 ``` text
-DEFENDER++ running at http://localhost:<port>
+Defender running at http://localhost:<port>
 ```
 
 Open that address in your browser.
@@ -283,10 +283,20 @@ Future improvements can include:
 
 ## 👨‍💻 Author
 
-**Naman Karna**/
-**Krishal Khatri**/
-**Nikhil Kr. Verma**/
-**Krishna Bahadur Thapa**
+**KRISHAL KHATRI** / 
+**NAMAN KARNA** /
+**NIKHIL KUMAR VERMA** /
+**KRISHNA BAHADUR THAPA**
+
+------------------------------------------------------------------------
+
+## 📄 License
+
+Add your preferred open-source license before publishing the project for
+wider reuse.
+
+If you do not want others to reuse or redistribute the code yet,
+consider adding a clear project-specific license or usage statement.
 
 ------------------------------------------------------------------------
 
@@ -307,3 +317,4 @@ Before submitting changes:
 ### 🛡️ DEFENDER++
 
 **Protect • Monitor • Encrypt • Secure**
+
