@@ -8,6 +8,12 @@
 
     <link rel="stylesheet" href="../../../style.css" />
     <link rel="stylesheet" href="./decrypt-file.css" />
+
+    <!-- ADD THIS FONT AWESOME LINK HERE -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
   </head>
 
   <body>
@@ -94,7 +100,7 @@
           </div>
         </div>
 
-        <!-- PASSWORD -->
+        <!-- PASSWORD FIELD WITH EYE BUTTON -->
 
         <div class="file-crypto-field">
           <label>
@@ -112,7 +118,7 @@
             <button
               type="button"
               class="password-toggle"
-              data-target="decryptFilePassword"
+              id="showDecryptionPassword"
               title="Show password"
             >
               <i class="fa-regular fa-eye"></i>
@@ -126,6 +132,17 @@
           <i class="fa-solid fa-unlock"></i>
           <span>Start Decryption</span>
         </button>
+        
+        <br>
+        
+        <div class="rp-back-container" align="center">
+          <a
+            href="../../../decryption-system/select-decryption/decryption.html"
+            class="rp-back-btn"
+          >
+            ← Back to Decryption Page
+          </a>
+        </div>
 
         <!-- SUCCESS -->
 

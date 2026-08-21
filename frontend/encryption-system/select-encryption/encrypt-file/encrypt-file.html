@@ -8,6 +8,12 @@
 
     <link rel="stylesheet" href="../../../style.css" />
     <link rel="stylesheet" href="./encrypt-file.css" />
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
   </head>
 
   <body>
@@ -91,7 +97,7 @@
           </div>
         </div>
 
-        <!-- PASSWORD -->
+        <!-- PASSWORD FIELD -->
         <div class="file-crypto-field">
           <label>
             <i class="fa-solid fa-key"></i>
@@ -105,11 +111,13 @@
               placeholder="Enter password"
             />
 
+            <!-- Eye Toggle Button -->
             <button
               type="button"
               class="password-toggle"
-              data-target="encryptFilePassword"
+              id="showEncryptionPassword"
               title="Show password"
+              aria-label="Show password"
             >
               <i class="fa-regular fa-eye"></i>
             </button>
@@ -121,6 +129,17 @@
           <i class="fa-solid fa-lock"></i>
           <span>Start Encryption</span>
         </button>
+
+        <br />
+
+        <div class="rp-back-container" align="center">
+          <a
+            href="../../../encryption-system/select-encryption/encryption.html"
+            class="rp-back-btn"
+          >
+            ← Back to Encryption Page
+          </a>
+        </div>
 
         <!-- SUCCESS MESSAGE -->
         <div class="file-status success" id="encryptionSuccess">
