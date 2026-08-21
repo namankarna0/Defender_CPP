@@ -327,10 +327,36 @@
 /* =========================================================
    EYE BUTTON
 ========================================================= */
+/* =========================================================
+   PASSWORD EYE BUTTON
+   Same style as Encrypt Text
+========================================================= */
 
-.password-toggle {
-    width: 58px;
-    height: 56px;
+.crypto-password-box {
+    display: flex;
+    overflow: hidden;
+
+    background: #050B18;
+
+    border: 1px solid rgba(0, 217, 255, 0.2);
+
+    border-radius: 13px;
+}
+
+.crypto-password-box input {
+    width: 100%;
+    padding: 16px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+    color: white;
+}
+
+.crypto-password-box button {
+    width: 55px;
+    height: auto;
 
     flex-shrink: 0;
 
@@ -338,36 +364,36 @@
     align-items: center;
     justify-content: center;
 
-    border: 0;
+    border: none;
 
     background: transparent;
 
-    color: #667991;
+    color: #71809A;
 
     cursor: pointer;
 
     font-size: 16px;
 
     transition:
-        color .25s ease,
-        background .25s ease,
-        transform .25s ease;
+        color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
 }
 
-.password-toggle:hover {
-    color: #00d9ff;
+.crypto-password-box button:hover {
+    color: #00D9FF;
 
-    background:
-        rgba(0, 217, 255, 0.06);
+    background: rgba(0, 217, 255, 0.06);
 
     transform: scale(1.04);
 }
 
-.password-toggle.password-visible {
-    color: #00d9ff;
+.crypto-password-box button:focus {
+    outline: none;
+}
 
-    text-shadow:
-        0 0 10px rgba(0, 217, 255, 0.5);
+.crypto-password-box button i {
+    transition: transform 0.25s ease;
 }
 
 
